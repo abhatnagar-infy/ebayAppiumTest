@@ -4,7 +4,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
+import androidproficiency.com.appiumtestproject.Utils.CommonUtilities;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -26,12 +28,12 @@ public class DriverSetup {
     }
 
     private void initDriver() {
-        System.out.println("Inside initDriver method");
+        Properties configProperties = CommonUtilities.getConfigValue(getClass(), "config.properties");
 
-        caps.setCapability("deviceName", "lg1");
-        caps.setCapability("udid", "LGD8554708604f"); //DeviceId from "adb devices" command
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("platformVersion", "4.4.2");
+        caps.setCapability("deviceName", configProperties.getProperty("deviceName"));
+        caps.setCapability("udid", configProperties.getProperty("udid")); //DeviceId from "adb devices" command
+        caps.setCapability("platformName", configProperties.getProperty("platformName"));
+        caps.setCapability("platformVersion", configProperties.getProperty("platformVersion"));
         caps.setCapability("skipUnlock", "true");
         caps.setCapability("appPackage", "com.ebay.mobile");
         caps.setCapability("appActivity", "com.ebay.mobile.activities.MainActivity");
