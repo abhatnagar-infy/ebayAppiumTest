@@ -18,6 +18,10 @@ import androidproficiency.com.appiumtestproject.Pages.ProgressContainer;
 import androidproficiency.com.appiumtestproject.Pages.ProgressLayout;
 import androidproficiency.com.appiumtestproject.Setup.Driver;
 
+/***
+ * A basic test to Automation the scenario “Login to eBay mobile application and search for an
+ item and add to cart and purchase it”
+ */
 public class SearchProductTest extends Driver {
 
     public WebDriverWait wait;

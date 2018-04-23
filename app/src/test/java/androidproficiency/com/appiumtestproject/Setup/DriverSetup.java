@@ -20,6 +20,10 @@ public class DriverSetup {
         initDriver();
     }
 
+    /**
+     * Instantiate and get the driver with device and app capabilities
+     * @return
+     */
     public AppiumDriver getDriver() {
         if (null == androidDriver) {
             initDriver();

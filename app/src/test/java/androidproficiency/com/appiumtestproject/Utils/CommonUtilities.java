@@ -18,6 +18,12 @@ public class CommonUtilities {
 
     private static final String TAG = CommonUtilities.class.getSimpleName();
 
+    /**
+     * To check if an element exists or not
+     * @param driver Appium driver
+     * @param id id of element
+     * @return if an element exists
+     */
     public static boolean existsElement(AppiumDriver driver, String id) {
         try {
             driver.findElement(By.id(id));
@@ -27,6 +33,12 @@ public class CommonUtilities {
         return true;
     }
 
+    /***
+     * To swipe the screen based on position of web elements
+     * @param driver Appium driver
+     * @param list list of elements to perform swipe on
+     */
+
     public static void performSwipe(AppiumDriver driver, List<WebElement> list) {
         WebElement bottomElement = list.get(list.size() - 1);
         WebElement topElement = list.get(0);
@@ -34,6 +46,12 @@ public class CommonUtilities {
         touchAction.perform();
     }
 
+    /***
+     * To read value of a config file
+     * @param context class context
+     * @param fileName file to be read
+     * @return all properties from the file
+     */
     public static Properties getConfigValue(Class context, String fileName) {
         ClassLoader classLoader = context.getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
