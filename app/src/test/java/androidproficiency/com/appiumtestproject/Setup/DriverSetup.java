@@ -1,5 +1,6 @@
 package androidproficiency.com.appiumtestproject.Setup;
 
+import org.eclipse.jetty.util.annotation.ManagedObject;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
@@ -10,6 +11,8 @@ import androidproficiency.com.appiumtestproject.Utils.CommonUtilities;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DriverSetup {
 
@@ -34,14 +37,14 @@ public class DriverSetup {
     private void initDriver() {
         Properties configProperties = CommonUtilities.getConfigValue(getClass(), "config.properties");
 
-        caps.setCapability("deviceName", configProperties.getProperty("deviceName"));
-        caps.setCapability("udid", configProperties.getProperty("udid")); //DeviceId from "adb devices" command
-        caps.setCapability("platformName", configProperties.getProperty("platformName"));
-        caps.setCapability("platformVersion", configProperties.getProperty("platformVersion"));
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, configProperties.getProperty("deviceName"));
+        caps.setCapability(MobileCapabilityType.UDID, configProperties.getProperty("udid")); //DeviceId from "adb devices" command
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, configProperties.getProperty("platformName"));
+        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, configProperties.getProperty("platformVersion"));
         caps.setCapability("skipUnlock", "true");
-        caps.setCapability("appPackage", "com.ebay.mobile");
-        caps.setCapability("appActivity", "com.ebay.mobile.activities.MainActivity");
-        caps.setCapability("noReset", "false");
+        caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.ebay.mobile");
+        caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "com.ebay.mobile.activities.MainActivity");
+        caps.setCapability(MobileCapabilityType.NO_RESET, "false");
 
         try {
             androidDriver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);

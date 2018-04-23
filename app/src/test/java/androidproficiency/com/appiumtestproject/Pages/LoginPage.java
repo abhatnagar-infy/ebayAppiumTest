@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import androidproficiency.com.appiumtestproject.Utils.CommonUtilities;
@@ -26,10 +28,15 @@ public class LoginPage extends BasePage{
     public void signin() {
         Properties loginProps = CommonUtilities.getConfigValue(getClass(), "creds.properties");
 
+        List<WebElement> list = new ArrayList<>();
+        list.add(loginPage.progressLayout);
+
         wait.until(ExpectedConditions.visibilityOf(loginPage.userNameFld));
         wait.until(ExpectedConditions.visibilityOf(loginPage.userNameFld)).sendKeys(loginProps.getProperty("username"));
         wait.until(ExpectedConditions.visibilityOf(loginPage.passwordField)).sendKeys(loginProps.getProperty( "password"));
+        driver.hideKeyboard();
         wait.until(ExpectedConditions.visibilityOf(loginPage.loginBtn)).click();
+        wait.until(ExpectedConditions.invisibilityOfAllElements(list));
     }
 
     class PageObjects {
@@ -44,5 +51,9 @@ public class LoginPage extends BasePage{
         @CacheLookup
         @FindBy(id = "edit_text_password")
         WebElement passwordField;
+
+        @CacheLookup
+        @FindBy(id = "progress_layout")
+        WebElement progressLayout;
     }
 }

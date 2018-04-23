@@ -53,11 +53,12 @@ public class SearchProductTest extends Driver {
         homePage.gotToLoginPage();
 
         loginPage.signin();
-
         enrollmentPage.enroll();
+
         homePage.searchProduct();
+
         if(progressContainer.isProgressContainerHidden()) {
-            productList.choseRandomItem();
+            productList.chooseRandomItem();
         }
 
         if(progressLayout.isProgressLayoutHidden()) {
@@ -66,8 +67,8 @@ public class SearchProductTest extends Driver {
 
         productCart.reviewProduct();
 
-        Assert.assertTrue("Product title is same: ", productCart.getActualProductName().contains(productDescription.getExpectedProductName()));
-        Assert.assertEquals("Product price is same: ", productDescription.getExpectedProductPrice(), productCart.getActualProductPrice());
+        Assert.assertTrue("Product title is different ", productCart.getActualProductName().contains(productDescription.getExpectedProductName()));
+        Assert.assertEquals("Product price is different ", productDescription.getExpectedProductPrice(), productCart.getActualProductPrice());
 
         Thread.sleep(20000);
     }

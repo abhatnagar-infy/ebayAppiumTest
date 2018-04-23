@@ -22,7 +22,7 @@ public class ProductList extends BasePage {
         PageFactory.initElements(this.driver, productList);
     }
 
-    public void choseRandomItem() {
+    public void chooseRandomItem() {
         wait.until(ExpectedConditions.visibilityOf(productList.recycler));
 
         int fakeSwipeCount = 0;
