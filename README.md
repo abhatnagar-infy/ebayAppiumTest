@@ -1,5 +1,7 @@
 # Ebay Appium Test
 
+Download apk from https://apkpure.com/ebay-shop-deals-home-fashion-electronics/com.ebay.mobile
+
 Device Configuration for this automation [config.properties](app/src/test/resources/config.properties)
 
 # Pre-requisites
