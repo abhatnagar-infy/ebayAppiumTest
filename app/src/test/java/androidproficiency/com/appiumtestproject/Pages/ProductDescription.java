@@ -30,6 +30,9 @@ public class ProductDescription extends BasePage {
         PageFactory.initElements(this.driver, productDescription);
     }
 
+    /**
+     * To store the name and price of product and buy
+     */
     public void buyProduct() {
         wait.until(ExpectedConditions.visibilityOf(productDescription.productCard));
 

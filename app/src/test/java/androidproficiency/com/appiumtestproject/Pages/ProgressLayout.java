@@ -24,6 +24,10 @@ public class ProgressLayout extends BasePage {
         PageFactory.initElements(this.driver, progressLayout);
     }
 
+    /**
+     * To wait until the progress layout becomes invisible
+     * @return when progress layout becomes invisible
+     */
     public boolean isProgressLayoutHidden() {
         List<WebElement> list = new ArrayList<>();
         list.add(progressLayout.progressLayout);

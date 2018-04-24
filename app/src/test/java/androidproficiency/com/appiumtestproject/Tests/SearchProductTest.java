@@ -34,6 +34,10 @@ public class SearchProductTest extends Driver {
     private ProductDescription productDescription;
     private ProductCart productCart;
 
+    /**
+     * Initialisation of driver and Pages
+     * @throws MalformedURLException
+     */
     @Before
     public void setup() throws MalformedURLException {
         wait = new WebDriverWait(driver, 50);
@@ -48,6 +52,10 @@ public class SearchProductTest extends Driver {
         productCart = new ProductCart(driver, wait);
     }
 
+    /***
+     * Test case to run after setup
+     * @throws InterruptedException
+     */
     @Test
     public void basicTest() throws InterruptedException {
         homePage.gotToLoginPage();
@@ -73,6 +81,9 @@ public class SearchProductTest extends Driver {
         Thread.sleep(20000);
     }
 
+    /**
+     * To release the driver
+     */
     @After
     public void teardown() {
         driver.quit();

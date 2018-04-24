@@ -7,8 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Properties;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+
+import static androidproficiency.com.appiumtestproject.Utils.CommonUtilities.getConfigValue;
 
 public class HomePage extends BasePage {
 
@@ -20,14 +24,21 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, homePage);
     }
 
+    /**
+     * To navigate to login page
+     */
     public void gotToLoginPage() {
         wait.until(ExpectedConditions.visibilityOf(homePage.signInBtn)).click();
     }
 
+    /**
+     * To search a product
+     */
     public void searchProduct() {
         wait.until(ExpectedConditions.visibilityOf(homePage.searchBox)).click();
         wait.until(ExpectedConditions.visibilityOf(homePage.searchText)).click();
-        wait.until(ExpectedConditions.visibilityOf(homePage.searchText)).sendKeys("65 inch tv");
+        Properties properties = getConfigValue(getClass(), "product");
+        wait.until(ExpectedConditions.visibilityOf(homePage.searchText)).sendKeys(properties.getProperty("product1"));
 
         driver.hideKeyboard();
 

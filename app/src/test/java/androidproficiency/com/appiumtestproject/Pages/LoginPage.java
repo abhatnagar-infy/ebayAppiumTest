@@ -25,6 +25,9 @@ public class LoginPage extends BasePage{
         PageFactory.initElements(driver, loginPage);
     }
 
+    /**
+     * Enter the credentials and sign in
+     */
     public void signin() {
         Properties loginProps = CommonUtilities.getConfigValue(getClass(), "creds.properties");
 

@@ -21,6 +21,9 @@ public class EnrollmentPage extends BasePage {
         PageFactory.initElements(this.driver, enrollmentPage);
     }
 
+    /**
+     * Verify if enrollment page appears and perform action
+     */
     public void enroll() {
         if (CommonUtilities.existsElement(driver, "com.ebay.mobile:id/before_enrollment")) {
             wait.until(ExpectedConditions.visibilityOf(enrollmentPage.denyBtn)).click();

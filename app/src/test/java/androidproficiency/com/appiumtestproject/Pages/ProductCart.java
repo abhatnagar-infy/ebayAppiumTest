@@ -30,6 +30,9 @@ public class ProductCart extends BasePage {
         PageFactory.initElements(driver, productCart);
     }
 
+    /**
+     * To store the name and price of product in cart and proceed to buy
+     */
     public void reviewProduct() {
         actualProductName = wait.until(ExpectedConditions.visibilityOf(productCart.title)).getText();
         actualProductPrice = wait.until(ExpectedConditions.visibilityOf(productCart.price)).getText();

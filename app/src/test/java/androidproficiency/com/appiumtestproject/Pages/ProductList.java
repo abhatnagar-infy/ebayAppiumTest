@@ -22,6 +22,9 @@ public class ProductList extends BasePage {
         PageFactory.initElements(this.driver, productList);
     }
 
+    /**
+     * Select random item from list of products
+     */
     public void chooseRandomItem() {
         wait.until(ExpectedConditions.visibilityOf(productList.recycler));
 
